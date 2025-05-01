@@ -1,0 +1,22 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/ingredients/ingredients",
+    "pages/recipes/recipes",
+    "pages/suggestions/suggestions",
+    "pages/recipeDetail/recipeDetail"
+  ],
+  "usingComponents": {
+    "app-footer": "/components/footer/footer"
+  },
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "今天吃什么",
+    "navigationBarBackgroundColor": "#ffffff"
+  },
+  "style": "v2",
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

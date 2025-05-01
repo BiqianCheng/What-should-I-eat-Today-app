@@ -1,0 +1,34 @@
+.detail-container {
+  padding: 20rpx;
+  position: relative;
+}
+.delete-btn {
+  display: block;
+  margin: 0 auto 20rpx;
+  padding: 10rpx 20rpx;
+  background-color: #ff4d4f;
+  color: #ffffff;
+  border: none;
+  border-radius: 6rpx;
+  font-size: 28rpx;
+}
+.detail-img {
+  width: 100%;
+  height: 400rpx;
+  border-radius: 8rpx;
+}
+.detail-title {
+  display: block;
+  font-size: 32rpx;
+  font-weight: bold;
+  margin: 20rpx 0;
+}
+.section-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  margin-top: 20rpx;
+}
+.detail-text {
+  font-size: 26rpx;
+  margin: 6rpx 0;
+}

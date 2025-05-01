@@ -1,0 +1,51 @@
+Page({
+  data: {
+    fridge: [],
+    cabinet: [],
+    fridgeInput: '',
+    cabinetInput: ''
+  },
+
+  onFridgeInput(e) {
+    this.setData({ fridgeInput: e.detail.value });
+  },
+
+  onCabinetInput(e) {
+    this.setData({ cabinetInput: e.detail.value });
+  },
+
+  addFridgeItem() {
+    const { fridge, fridgeInput } = this.data;
+    if (fridgeInput) {
+      this.setData({
+        fridge: [...fridge, fridgeInput],
+        fridgeInput: ''
+      });
+    }
+  },
+
+  addCabinetItem() {
+    const { cabinet, cabinetInput } = this.data;
+    if (cabinetInput) {
+      this.setData({
+        cabinet: [...cabinet, cabinetInput],
+        cabinetInput: ''
+      });
+    }
+  },
+
+  removeFridgeItem(e) {
+    const index = e.currentTarget.dataset.index;
+    const newList = this.data.fridge.filter((_, i) => i !== index);
+    this.setData({ fridge: newList });
+  },
+
+  removeCabinetItem(e) {
+    const index = e.currentTarget.dataset.index;
+    const newList = this.data.cabinet.filter((_, i) => i !== index);
+    this.setData({ cabinet: newList });
+  },
+});
+
+<!-- 页脚版权 -->
+<app-footer />

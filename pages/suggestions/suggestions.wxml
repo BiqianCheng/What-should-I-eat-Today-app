@@ -1,0 +1,15 @@
+<view class="container">
+  <text class="title">你可以做这些菜：</text>
+
+  <block wx:if="{{canCook.length > 0}}">
+    <block wx:for="{{canCook}}" wx:key="index">
+      <view class="item">
+        <text>{{item.name}}</text>
+      </view>
+    </block>
+  </block>
+
+  <block wx:else>
+    <text>你现在不能做任何菜哦～</text>
+  </block>
+</view>

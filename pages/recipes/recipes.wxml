@@ -1,0 +1,107 @@
+<view class="container">
+
+<text class="title">添加新菜谱</text>
+<input placeholder="菜名" bindinput="onNameInput" value="{{newRecipeName}}" />
+
+<button class="primary" bindtap="chooseImage">上传图片</button>
+<image wx:if="{{imageUrl}}" src="{{imageUrl}}" mode="aspectFill"
+       style="width:100%;height:200rpx;margin-top:10rpx;" />
+
+<view class="subtitle">选择所需材料</view>
+<input placeholder="搜索材料关键词" bindinput="onKeywordInput" value="{{keyword}}" />
+
+<view class="checkbox-list">
+  <block wx:for="{{filteredItems}}" wx:key="name" wx:for-item="item">
+    <view style="display:flex;align-items:center;">
+      <!-- Ingredient button -->
+      <view
+        bindtap="toggleIngredient"
+        data-name="{{item.name}}"
+        style="background-color:{{item.selected?'#07c160':'#ffffff'}};color:{{item.selected?'#ffffff':'#000000'}};border:1px solid {{item.selected?'#07c160':'#ccc'}};border-radius:20rpx;padding:10rpx 20rpx;margin:10rpx;font-size:26rpx;"
+      >
+        {{item.name}}{{item.selected?' ✔️':''}}
+      </view>
+      <!-- Delete button -->
+      <view
+        bindtap="deleteIngredient"
+        data-name="{{item.name}}"
+        style="margin-left:-20rpx;padding:10rpx;font-size:26rpx;color:#ff4d4f;"
+      >✖</view>
+    </view>
+  </block>
+</view>
+
+<text style="color:#888;font-size:26rpx;">找不到材料？请在下方添加：</text>
+<!--添加原材料原始方法-->
+<!-- <input placeholder="添加新原材料" bindconfirm="addNewIngredient" /> -->
+
+<!--添加原材料：自动清空输入内容-->
+<input
+  placeholder="添加新原材料"
+  bindconfirm="addNewIngredient"
+  value="{{newIngredientInput}}"
+/>
+
+<button class="primary" bindtap="addRecipe">添加菜谱</button>
+
+<!-- 已添加菜谱，一行一道菜-->
+<!-- <text class="title" style="margin-top:30rpx;">已添加菜谱</text>
+  <block wx:for="{{recipes}}" wx:key="name" wx:for-item="rec">
+    <view class="recommend">
+      <text>{{rec.name}}</text>
+      <image
+        wx:if="{{rec.image}}"
+        src="{{rec.image}}"
+        mode="aspectFill"
+        style="width:100%;height:150rpx;margin-top:10rpx;"
+      />
+    </view>
+  </block> -->
+
+<!-- 已添加菜谱: 网格布局 -->
+<text class="title" style="margin-top:30rpx;">已添加菜谱</text>
+  <view class="card-grid">
+    <block wx:for="{{recipes}}" wx:key="name" wx:for-item="rec">
+      <view class="card" bindtap="viewDetail" data-name="{{rec.name}}">
+        <image wx:if="{{rec.image}}" src="{{rec.image}}" mode="aspectFill" class="card-img" />
+        <text class="card-title">{{rec.name}}</text>
+      </view>
+    </block>
+  </view>
+
+  <!-- 已添加菜谱 -->
+  <!-- <text class="title" style="margin-top:30rpx;">已添加菜谱</text> -->
+  <!-- 卡片列表：单张 single， 多张三列 -->
+  <!-- <view class="card-list {{recipes.length === 1 ? 'single' : ''}}">
+    <block wx:for="{{recipes}}" wx:key="name" wx:for-item="item">
+      <view class="card" bindtap="viewDetail" data-name="{{item.name}}">
+        <image wx:if="{{item.image}}" src="{{item.image}}" mode="aspectFill" class="card-img" />
+        <text class="card-title">{{item.name}}</text>
+      </view>
+    </block>
+  </view> -->
+
+  <!-- 推荐菜谱 -->
+  <button class="primary" bindtap="recommendRecipes">推荐菜谱</button>
+  <!-- 推荐菜谱的网格布局-->>
+  <view class="card-grid">
+    <block wx:for="{{recommendedRecipes}}" wx:key="name" wx:for-item="item">
+      <view class="card">
+        <image wx:if="{{item.image}}" src="{{item.image}}" mode="aspectFill" class="card-img" />
+        <text class="card-title">{{item.name}}（{{item.matchCount}}/{{item.total}}）</text>
+      </view>
+    </block>
+  </view>
+
+<block wx:for="{{recommendedRecipes}}" wx:key="name" wx:for-item="item">
+  <view class="recommend">
+    <text>{{item.name}}（{{item.matchCount}} / {{item.total}}）</text>
+    <image wx:if="{{item.image}}" src="{{item.image}}" mode="aspectFill"
+           style="width:100%;height:150rpx;margin-top:10rpx;" />
+  </view>
+</block>
+
+</view>
+
+<!-- 页脚版权 -->
+<app-footer />

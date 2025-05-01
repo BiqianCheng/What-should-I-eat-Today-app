@@ -1,0 +1,11 @@
+/* components/footer/footer.wxss */
+.footer {
+  padding: 20rpx 0;
+  text-align: center;
+}
+.footer-line {
+  display: block;       /* 块级，自动换行 */
+  color: #999;
+  font-size: 24rpx;
+  line-height: 32rpx;   /* 可以根据需要调 */
+}

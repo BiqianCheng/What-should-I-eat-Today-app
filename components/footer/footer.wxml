@@ -1,0 +1,5 @@
+<!-- components/footer/footer.wxml -->
+<view class="footer">
+  <text class="footer-line">© 2025 程碧茜 版权所有</text>
+  <text class="footer-line">© 2025 Biqian Cheng. All Rights Reserved.</text>
+</view>

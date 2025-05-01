@@ -1,0 +1,15 @@
+<view class="detail-container">
+  <image wx:if="{{recipe.image}}" src="{{recipe.image}}" mode="aspectFill" class="detail-img" />
+  <text class="detail-title">{{recipe.name}}</text>
+  <!-- 删除按钮放在图片与材料之间 -->
+  <!-- <button class="delete-btn" bindtap="onDelete">删除</button> -->
+
+  <text class="section-title">所需材料：</text>
+  <block wx:for="{{recipe.ingredients}}" wx:key="index">
+    <text class="detail-text">- {{item}}</text>
+  </block>
+  <button class="delete-btn" bindtap="onDelete">删除</button>
+</view>
+
+<!-- 页脚版权 -->
+<app-footer />
