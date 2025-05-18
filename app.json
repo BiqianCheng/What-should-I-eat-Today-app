@@ -5,7 +5,8 @@
     "pages/ingredients/ingredients",
     "pages/recipes/recipes",
     "pages/suggestions/suggestions",
-    "pages/recipeDetail/recipeDetail"
+    "pages/recipeDetail/recipeDetail",
+    "pages/fridge/fridge"
   ],
   "usingComponents": {
     "app-footer": "/components/footer/footer"

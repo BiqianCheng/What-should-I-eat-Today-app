@@ -56,6 +56,24 @@ Page({
       newIngredientInput: ''  // ← 这行清空输入框
     });
   },
+  deleteIngredient(e) {
+    const name = e.currentTarget.dataset.name;
+    // 从 ingredientItems 和 filteredItems 里移除
+    const newItems = this.data.ingredientItems.filter(i => i.name !== name);
+    const newFiltered = newItems.filter(i =>
+      i.name.toLowerCase().includes(this.data.keyword.trim().toLowerCase())
+    );
+    // 从选中列表里清除
+    const newSelected = this.data.selectedRecipeIngredients.filter(n => n !== name);
+    // 同步存储冰箱（fridge）
+    wx.setStorageSync('fridge', newItems.map(i => i.name));
+    // 更新视图
+    this.setData({
+      ingredientItems: newItems,
+      filteredItems: newFiltered,
+      selectedRecipeIngredients: newSelected
+    });
+  },  
   chooseImage() {
     wx.chooseImage({count:1,sizeType:['compressed'],sourceType:['album','camera'],
       success:res=>this.setData({ imageUrl:res.tempFilePaths[0] })});
@@ -70,13 +88,22 @@ Page({
     const reset = ingredientItems.map(i=>({...i,selected:false}));
     this.setData({ recipes:updated,newRecipeName:'',newRecipeSteps:'',imageUrl:'',ingredientItems:reset,filteredItems:reset,keyword:'' });
   },
+  // // 基于手动输入原材料的方式
+  // recommendRecipes() {
+  //   const selected = this.data.ingredientItems.filter(i=>i.selected).map(i=>i.name);
+  //   const rec = this.data.recipes.map(r=>{
+  //     const m = r.ingredients.filter(i=>selected.includes(i));
+  //     return {...r,matchCount:m.length,total:r.ingredients.length};
+  //   }).filter(r=>r.matchCount>0);
+  //   this.setData({ recommendedRecipes:rec });
+  // },
+  // 推荐逻辑基于fridge有哪些食材的方式
   recommendRecipes() {
-    const selected = this.data.ingredientItems.filter(i=>i.selected).map(i=>i.name);
-    const rec = this.data.recipes.map(r=>{
-      const m = r.ingredients.filter(i=>selected.includes(i));
-      return {...r,matchCount:m.length,total:r.ingredients.length};
-    }).filter(r=>r.matchCount>0);
-    this.setData({ recommendedRecipes:rec });
+    const available = wx.getStorageSync('fridgeAvailable') || [];
+    const rec = this.data.recipes.filter(recipe =>
+      recipe.ingredients.every(ing => available.includes(ing))
+    );
+    this.setData({ recommendedRecipes: rec });
   },
   viewDetail(e) {
     const name = e.currentTarget.dataset.name;

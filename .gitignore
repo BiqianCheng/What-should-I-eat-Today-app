@@ -12,3 +12,16 @@ $RECYCLE.BIN/
 
 # Node.js
 node_modules/
+
+# 微信开发者工具配置
+.project.config.json
+.project.private.config.json
+
+# 调试日志、缓存
+logs/
+dist/
+*.log
+
+# 上传包和其它临时文件
+upload/
+

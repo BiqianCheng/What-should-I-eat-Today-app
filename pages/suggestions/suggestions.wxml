@@ -1,15 +1,27 @@
+<!-- pages/suggestions/suggestions.wxml -->
 <view class="container">
   <text class="title">你可以做这些菜：</text>
 
+  <!-- 有菜时： -->
   <block wx:if="{{canCook.length > 0}}">
-    <block wx:for="{{canCook}}" wx:key="index">
-      <view class="item">
-        <text>{{item.name}}</text>
+    <block wx:for="{{canCook}}" wx:key="name" wx:for-item="item">
+      <view class="recommend" data-name="{{item.name}}" bindtap="viewDetail">
+        <image 
+          wx:if="{{item.image}}" 
+          src="{{item.image}}" 
+          mode="aspectFill" 
+          class="recommend-image"
+        />
+        <text class="recommend-text">{{item.name}}</text>
       </view>
     </block>
   </block>
 
+  <!-- 没有菜时： -->
   <block wx:else>
-    <text>你现在不能做任何菜哦～</text>
+    <text class="no-cook">你现在不能做任何菜哦～</text>
   </block>
 </view>
+
+<!-- 页脚版权 -->
+<app-footer />

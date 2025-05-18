@@ -1,12 +1,32 @@
+/* pages/suggestions/suggestions.wxss */
 .container {
   padding: 20rpx;
 }
 .title {
-  font-size: 32rpx;
+  font-size: 30rpx;
   font-weight: bold;
-  margin-bottom: 20rpx;
+  text-align: center;
+  margin-bottom: 30rpx;
 }
-.item {
-  padding: 15rpx;
-  border-bottom: 1px solid #eee;
+.recommend {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+.recommend-image {
+  width: 200rpx;
+  height: 150rpx;
+  border-radius: 8rpx;
+}
+.recommend-text {
+  margin-top: 10rpx;
+  font-size: 26rpx;
+  color: #333;
+}
+.no-cook {
+  text-align: center;
+  color: #999;
+  margin-top: 50rpx;
+  font-size: 26rpx;
 }

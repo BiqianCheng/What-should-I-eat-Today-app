@@ -51,7 +51,7 @@ button {
   height: 56px;
 }
 
-.nickname-wrapper {
+/* .nickname-wrapper {
   display: flex;
   width: 100%;
   padding: 16px;
@@ -59,12 +59,76 @@ button {
   border-top: .5px solid rgba(0, 0, 0, 0.1);
   border-bottom: .5px solid rgba(0, 0, 0, 0.1);
   color: black;
-}
+} */
 
-.nickname-label {
+/* .nickname-label {
   width: 105px;
 }
 
 .nickname-input {
   flex: 1;
+} */
+
+.container {
+  padding: 40rpx 40rpx 0 40rpx; /* 顶部左右40，底部0去掉空白 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* 内容不往下挤，去掉底部空白 */
 }
+.subtitle {
+  font-size: 26rpx;
+  color: #666;
+  text-align: left;
+  margin: 10rpx 0;
+}
+.title {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 0rpx;  /* 缩小标题下方空间 */
+}
+
+.guide-image {
+  width: 45%;          /* 占满父级宽度 */
+  max-width: 600rpx;    /* 最大宽度限制 */
+  height: 300rpx;       /* 固定高度，可根据需求调整 */
+  margin-bottom: 200rpx; /* 图片和按钮组的间距 */
+  border-radius: 200rpx;  /* 圆角 */
+}
+.intro-text {
+  font-size: 26rpx;
+  color: #333;
+  text-align: center;
+  line-height: 36rpx;
+}
+.intro-top {
+  margin-bottom: 0rpx; /* 与管理按钮贴近 */
+}
+.intro-mid {
+  margin-top: 80rpx;  /* 与进入菜谱按钮贴近 */
+  margin-bottom: 0rpx;
+}
+.button-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10rpx;
+  margin-top: 0;        /* 去掉额外顶部距离 */
+}
+
+.enter-recipes-btn { /* 新增：自定义推荐按钮颜色 */
+  background: #5aa2ff !important;
+}
+.button {
+  font-size: 28rpx;
+  padding: 20rpx 0;
+  border-radius: 8rpx;
+  text-align: center;
+}
+.button.full {
+  background-color: #07c160;
+  color: white;
+  width: 100%;
+}
+
+

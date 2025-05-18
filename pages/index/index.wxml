@@ -1,7 +1,8 @@
 <!--index.wxml-->
-<scroll-view class="scrollarea" scroll-y type="list">
-  <view class="container">
-    <view class="userinfo">
+<!-- <scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container"> -->
+    <!-- 用户登录界面和授权 -->
+    <!-- <view class="userinfo">
       <block wx:if="{{canIUseNicknameComp && !hasUserInfo}}">
         <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
           <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
@@ -22,9 +23,31 @@
     </view>
     <view class="usermotto">
       <text class="user-motto">{{motto}}</text>
+    </view> -->
+    <!-- <button class="primary" bindtap="recommendRecipes">推荐菜谱</button>
+    <button class="primary" bindtap="goToRecipes">进入菜谱页面</button>
+    <button class="secondary" bindtap="goToFridge">管理冰箱食材</button>
+    </view> -->
+
+<scroll-view class="scrollarea" scroll-y>
+  <view class="container">
+    <!-- 引导图片 -->
+    <image src="/assets/今天做点什么吃.png" class="guide-image" />
+
+    <!-- 说明文字：贴近“管理冰箱食材”按钮 -->
+    <text class="intro-text intro-top">想看看你能用冰箱里的菜做些什么吃吗？</text>
+
+    <!-- 按钮组：管理冰箱食材、推荐菜谱、进入菜谱页面 -->
+    <view class="button-group">
+      <button class="button full" bindtap="goToFridge">管理冰箱食材</button>
     </view>
-    <button bindtap="goToSuggestions">推荐菜谱</button>
-    <button bindtap="goToRecipes">进入菜谱页面</button>
+
+    <!-- 说明文字：贴近“进入菜谱页面”按钮 -->
+    <text class="intro-text intro-mid">有平时刷到的好吃的做饭教程吗？或者只是为了后续看看能做什么菜？把食谱需要的食材先放进来：</text>
+
+    <view class="button-group">
+      <button class="button full enter-recipes-btn" bindtap="goToRecipes">进入菜谱页面</button>
+    </view>
   </view>
 </scroll-view>
 

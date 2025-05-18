@@ -55,5 +55,10 @@ Page({
     wx.navigateTo({
       url: '/pages/suggestions/suggestions'
     })
-  }, 
+  },
+  goToFridge() {
+    wx.navigateTo({
+      url: '/pages/fridge/fridge'
+    });
+  }
 })

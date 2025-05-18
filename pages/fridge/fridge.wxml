@@ -1,0 +1,29 @@
+<!-- pages/fridge/fridge.wxml -->
+<view class="container">
+  <text class="title">冰箱中的食材</text>
+
+  <view class="button-group">
+    <button class="primary" bindtap="chooseImage">拍照识别</button>
+    <button class="secondary" bindtap="clearFridge">清空冰箱</button>
+  </view>
+
+  <text class="subtitle">当前识别/手动添加的食材：</text>
+  <view class="tag-list">
+    <block wx:for="{{fridgeItems}}" wx:key="name" wx:for-item="item">
+      <view class="tag-item">
+        {{item}}
+        <text class="del" data-name="{{item}}" bindtap="removeItem">✖</text>
+      </view>
+    </block>
+  </view>
+
+  <input placeholder="手动添加新食材" bindconfirm="addItem" value="{{inputValue}}" />
+
+  <view class="button-group" style="margin-top:100rpx;">
+    <button class="primary full recommend-btn" bindtap="goToSuggestions">推荐菜谱</button>
+  </view>
+
+</view>
+
+<!-- 页脚版权 -->
+<app-footer />
